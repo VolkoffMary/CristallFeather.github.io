@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>      
+    
+    <head>
+        <title>ФИО</title>
+        <link rel="stylesheet" href="CSS.css">
+	
+	<script src="TemplateMain.js" async></script>
+        <script src="EditForm.js" async></script>
+    </head>
+
+    <body>
+        <header></header>
+        
+        <div id="info">
+
+            <aside>
+                <a id="returnLink" href="PatientList.html">← Вернуться</a>
+                <br>
+                <a href="">Сохранить</a>
+                <br>
+                <a href="">Удалить</a>
+            </aside>   
+            
+            <div id="main">
+                <form method="POST">
+                    <p>Имя: <input id="name" name="name" value=""></p>
+                    <p>Пол: <input id="gender" name="gender" value=""></p>
+                    <p>Дата рождения: <input id="dateOfBirth" name="dateOfBirth" value=""></p>
+                    <p>ИНН: <input id="SNILS" name="SNILS" value=""></p>
+                    <p>СНИЛС: <input id="INN" name="INN" value=""></p>
+
+		    <p>Рабочий телефон: <input id="workPhonenumber" name="workPhonenumber" value=""></p>
+		    <p>Домашний телефон: <input id="homePhonenumber" name="homePhonenumber" value=""></p>
+                    <p>Профессия: <input id="job" name="job" value=""></p>
+
+		    <p>Mecто прописки: <input id="homeLocation" name="homeLocation" value=""></p>
+		    <p>Mecто проживания: <input id="liveLocation" name="liveLocation" value=""></p>
+		    <p>Место работы: <input id="workLocation" name="workLocation" value=""></p>
+		    <p>Прикрепленное поликлиническое учреждение: <input id="hospitalLocation" name="hospitalLocation" value=""></p>
+		    <p>ОМС: <input id="OMS" name="OMS" value=""></p>
+                    <p>ДМС: <input id="DMS" name="DMS" value=""></p>
+		    <input type="submit">
+                </form>
+            </div>
+
+        </div>
+
+        <footer></footer>
+    </body>
+
+</html>
