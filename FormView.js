@@ -4,7 +4,7 @@ var mark = link.indexOf("?id")+4;
 var id = link.substring(mark,link.length);
 var hrefLink='https://swapi.co/api/people/' + id;
 xhr.open('GET', hrefLink, true);
-var aHref = 'EditForm?id=' + id; 
+var aHref = 'EditForm.html?id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);
 
 
