@@ -28,9 +28,33 @@ xhr.onreadystatechange = function() {
     var fullName = document.getElementById('name');  
     fullName.setAttribute('value', CRUD.name);
 
+    var gender = document.getElementById('gender');  
+    gender.setAttribute('value', CRUD.gender);
+
+    var workPhonenumber = document.getElementById('workPhonenumber');  
+    workPhonenumber.setAttribute('value', CRUD.height);
+
+    var homePhonenumber = document.getElementById('homePhonenumber');  
+    homePhonenumber.setAttribute('value', CRUD.height);
+
+    var job = document.getElementById('job');  
+    job.setAttribute('value', CRUD.url);
+
+    var homeLocation = document.getElementById('homeLocation');  
+    homeLocation.setAttribute('value', CRUD.homeworld);
+    
+    var gender = document.getElementById('gender');  
+    fullName.setAttribute('value', CRUD.gender);
+
+    var liveLocation = document.getElementById('liveLocation');  
+    liveLocation.setAttribute('value', CRUD.homeworld);
+
+    var workLocation = document.getElementById('workLocation');  
+    workLocation.setAttribute('value', CRUD.homeworld);
+
     var dateOfBirth = document.getElementById('dateOfBirth');
     const birthday = new Date(CRUD.created);
-    dateOfBirth.setAttribute('value', birthday.toLocaleString());
+    dateOfBirth.setAttribute('value', birthday.toLocaleString());    
     }
 
 }

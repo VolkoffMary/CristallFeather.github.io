@@ -37,10 +37,11 @@ app.get('/doctors/', (req, res) =>  MongoClient.connect(url, function(err, clien
                                         //Collection name
                                         col = 'Doctors';
                                         const db = client.db(dbName);
-                                        res.send(
                                         findDocuments(db, col, function() {
+                                            res.addHeader("Access-Control-Allow-Origin", "*");
+                                            res.send();
                                             client.close();
-                                        }))
+                                        })
                                     })
 )
 
