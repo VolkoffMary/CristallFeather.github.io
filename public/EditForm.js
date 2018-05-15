@@ -42,15 +42,21 @@ xhr.onreadystatechange = function() {
 
     var homeLocation = document.getElementById('homeLocation');  
     homeLocation.setAttribute('value', CRUD.homeworld);
-    
-    var gender = document.getElementById('gender');  
-    fullName.setAttribute('value', CRUD.gender);
 
     var liveLocation = document.getElementById('liveLocation');  
     liveLocation.setAttribute('value', CRUD.homeworld);
 
     var workLocation = document.getElementById('workLocation');  
     workLocation.setAttribute('value', CRUD.homeworld);
+
+    var hospitalLocation = document.getElementById('hospitalLocation');  
+    hospitalLocation.setAttribute('value', CRUD.homeworld);
+
+    var OMS = document.getElementById('OMS');  
+    OMS.setAttribute('value', CRUD.mass);
+
+    var workLocation = document.getElementById('workLocation');  
+    workLocation.setAttribute('value', CRUD.mass);
 
     var dateOfBirth = document.getElementById('dateOfBirth');
     const birthday = new Date(CRUD.created);

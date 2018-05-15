@@ -31,6 +31,36 @@ xhr.onreadystatechange = function() {
     var dateOfBirth = document.getElementById('dateOfBirth');
     const birthday = new Date(CRUD.created)      
     dateOfBirth.innerHTML = dateOfBirth.innerHTML + birthday.toLocaleString(); 
+
+    var gender = document.getElementById('gender');  
+    gender.innerHTML = CRUD.gender;
+
+    var workPhonenumber = document.getElementById('workPhonenumber');  
+    workPhonenumber.setAttribute('value', CRUD.height);
+
+    var homePhonenumber = document.getElementById('homePhonenumber');  
+    homePhonenumber.setAttribute('value', CRUD.height);
+
+    var job = document.getElementById('job');  
+    job.setAttribute('value', CRUD.url);
+
+    var homeLocation = document.getElementById('homeLocation');  
+    homeLocation.setAttribute('value', CRUD.homeworld);
+
+    var liveLocation = document.getElementById('liveLocation');  
+    liveLocation.setAttribute('value', CRUD.homeworld);
+
+    var workLocation = document.getElementById('workLocation');  
+    workLocation.setAttribute('value', CRUD.homeworld);
+
+    var hospitalLocation = document.getElementById('hospitalLocation');  
+    hospitalLocation.setAttribute('value', CRUD.homeworld);
+
+    var OMS = document.getElementById('OMS');  
+    OMS.setAttribute('value', CRUD.mass);
+
+    var workLocation = document.getElementById('workLocation');  
+    workLocation.setAttribute('value', CRUD.mass);
     }
 
 }
