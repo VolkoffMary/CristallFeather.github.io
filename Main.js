@@ -4,12 +4,21 @@ const http = require('http');
 const static = require('node-static');
 const file = new static.Server('.');
 
-http.createServer(function(req, res) {
-    res.writeHeader(200, {"Content-Type": "text/html"});  
-    res.write(MainPage.html);  
-    console.log('Server running on port 8080');
-    res.end();    
-}).listen(8080);
+const express = require('express')
+const app = express()
+
+app.use(express.static('./public/'))
+
+app.get('/api/', (req, res) => res.send([{name : 'ABC', created : 123}]))
+
+app.listen(8080, () => console.log('I am up on :8080'))
+
+// http.createServer(function(req, res) {
+//     res.writeHeader(200, {"Content-Type": "text/html"});  
+//     res.write('MainPage.html');  
+//     console.log('Server running on port 8080');
+//     res.end();    
+// }).listen(8080);
 
 //login
 login = 'Guest';
