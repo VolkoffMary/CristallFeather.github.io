@@ -57,6 +57,7 @@ xhr.onreadystatechange = function() {
 
     var DMS = document.getElementById('DMS');  
     DMS.setAttribute('value', CRUD.mass);
+    
 
     var dateOfBirth = document.getElementById('dateOfBirth');
     const birthday = new Date(CRUD.created);
