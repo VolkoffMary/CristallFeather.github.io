@@ -1,0 +1,30 @@
+{
+  "name": "cristallfeather.github.io",
+  "version": "1.0.0",
+  "description": "blah.",
+  "main": "Main.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "http": "^0.0.0",
+    "mongodb": "^3.0.7",
+    "node-install": "^1.1.0",
+    "node-static": "^0.7.10",
+    "querystring": "^0.2.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristallFeather/CristallFeather.github.io.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CristallFeather/CristallFeather.github.io/issues"
+  },
+  "homepage": "https://github.com/CristallFeather/CristallFeather.github.io#readme"
+}

@@ -1,32 +1,57 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const http = require('http');
+const static = require('node-static');
+const file = new static.Server('.');
+
+const express = require('express')
+const app = express()
+
+app.use(express.static('./public/'))
+
+app.get('/api/', (req, res) => res.send([{name : 'ABC', created : 123}]))
+
+app.listen(8080, () => console.log('I am up on :8080'))
+
+// http.createServer(function(req, res) {
+//     res.writeHeader(200, {"Content-Type": "text/html"});  
+//     res.write('MainPage.html');  
+//     console.log('Server running on port 8080');
+//     res.end();    
+// }).listen(8080);
+
+//login
+login = 'Guest';
+
+//password
+pass = 'Ce3WnCktxjqM6Vsg';
 
 // Connection URL
-const url = 'mongodb://AlasER:LunaLina@mycluster-shard-00-00-w2hxl.mongodb.net:27017,mycluster-shard-00-01-w2hxl.mongodb.net:27017,mycluster-shard-00-02-w2hxl.mongodb.net:27017/test?ssl=true&replicaSet=myCluster-shard-0&authSource=admin';
+url = 'mongodb://' + login + ':' + pass + '@mycluster-shard-00-00-w2hxl.mongodb.net:27017,mycluster-shard-00-01-w2hxl.mongodb.net:27017,mycluster-shard-00-02-w2hxl.mongodb.net:27017/test?ssl=true&replicaSet=myCluster-shard-0&authSource=admin&retryWrites=true';
 
 // Database Name
-const dbName = 'myCluster';
+const dbName = 'Patients&Doctors';
+
+//Collection name
+col = 'Doctors';
 
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, client) {
+    console.log("Connecting to server...");    
     assert.equal(null, err);
     console.log("Connected successfully to server");
 
     const db = client.db(dbName);
-    removeDocument(db, function() {
-        findDocuments(db, function() {
-            client.close();
-        });
+    findDocuments(db, col, function() {
+        client.close();
     });
 });
 
-
 //================================================
-
 
 const insertDocuments = function(db, callback) {
     // Get the documents collection
-    const collection = db.collection('documents');
+    const collection = db.collection(col);
     // Insert some documents
     collection.insertMany([
         {a : 1}, {a : 2}, {a : 3}
@@ -39,9 +64,9 @@ const insertDocuments = function(db, callback) {
     });
 }
 
-const findDocuments = function(db, callback) {
+const findDocuments = function(db, col, callback) {
     // Get the documents collection
-    const collection = db.collection('documents');
+    const collection = db.collection(col);
     // Find some documents
     collection.find({}).toArray(function(err, docs) {
         assert.equal(err, null);
@@ -53,7 +78,7 @@ const findDocuments = function(db, callback) {
 
 const updateDocument = function(db, callback) {
     // Get the documents collection
-    const collection = db.collection('documents');
+    const collection = db.collection(col);
     // Update document where a is 2, set b equal to 1
     collection.updateOne({ a : 2 }
     , { $set: { b : 1 } }, function(err, result) {
@@ -66,7 +91,7 @@ const updateDocument = function(db, callback) {
 
 const removeDocument = function(db, callback) {
   // Get the documents collection
-  const collection = db.collection('documents');
+  const collection = db.collection(col);
   // Delete document where a is 3
   collection.deleteOne({ a : 1 }, function(err, result) {
     assert.equal(err, null);
