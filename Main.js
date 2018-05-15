@@ -6,7 +6,7 @@ const file = new static.Server('.');
 
 http.createServer(function(req, res) {
     res.writeHeader(200, {"Content-Type": "text/html"});  
-    res.write(MainPage.html);  
+    res.write('MainPage.html');  
     console.log('Server running on port 8080');
     res.end();    
 }).listen(8080);
