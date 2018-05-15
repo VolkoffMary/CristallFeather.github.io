@@ -33,34 +33,34 @@ xhr.onreadystatechange = function() {
     dateOfBirth.innerHTML = dateOfBirth.innerHTML + birthday.toLocaleString(); 
 
     var gender = document.getElementById('gender');  
-    gender.innerHTML = CRUD.gender;
+    gender.innerHTML = gender.innerHTML + CRUD.gender;
 
     var workPhonenumber = document.getElementById('workPhonenumber');  
-    workPhonenumber.setAttribute('value', CRUD.height);
+    workPhonenumber.innerHTML = workPhonenumber.innerHTML + CRUD.height);
 
     var homePhonenumber = document.getElementById('homePhonenumber');  
-    homePhonenumber.setAttribute('value', CRUD.height);
+    homePhonenumber.innerHTML = homePhonenumber.innerHTML + CRUD.height);
 
     var job = document.getElementById('job');  
-    job.setAttribute('value', CRUD.url);
+    job.innerHTML = job.innerHTML + CRUD.url);
 
     var homeLocation = document.getElementById('homeLocation');  
-    homeLocation.setAttribute('value', CRUD.homeworld);
+    homeLocation.innerHTML = homeLocation.innerHTML + CRUD.homeworld);
 
     var liveLocation = document.getElementById('liveLocation');  
-    liveLocation.setAttribute('value', CRUD.homeworld);
+    liveLocation.innerHTML = liveLocation.innerHTML + CRUD.homeworld);
 
     var workLocation = document.getElementById('workLocation');  
-    workLocation.setAttribute('value', CRUD.homeworld);
+    workLocation.innerHTML = workLocation.innerHTML + CRUD.homeworld);
 
     var hospitalLocation = document.getElementById('hospitalLocation');  
-    hospitalLocation.setAttribute('value', CRUD.homeworld);
+    hospitalLocation.innerHTML = hospitalLocation.innerHTML + CRUD.homeworld);
 
     var OMS = document.getElementById('OMS');  
-    OMS.setAttribute('value', CRUD.mass);
+    OMS.innerHTML = OMS.innerHTML + CRUD.mass);
 
-    var workLocation = document.getElementById('workLocation');  
-    workLocation.setAttribute('value', CRUD.mass);
+    var DMS = document.getElementById('DMS');  
+    DMS.innerHTML = DMS.innerHTML + CRUD.mass);
     }
 
 }

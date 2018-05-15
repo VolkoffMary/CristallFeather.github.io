@@ -26,7 +26,7 @@ xhr.onreadystatechange = function() {
     title.innerHTML = CRUD.name;
 
     var fullName = document.getElementById('name');  
-    fullName.setAttribute('value', CRUD.url);
+    fullName.setAttribute('value', CRUD.name);
 
     var gender = document.getElementById('gender');  
     gender.setAttribute('value', CRUD.gender);
@@ -55,8 +55,8 @@ xhr.onreadystatechange = function() {
     var OMS = document.getElementById('OMS');  
     OMS.setAttribute('value', CRUD.mass);
 
-    var workLocation = document.getElementById('workLocation');  
-    workLocation.setAttribute('value', CRUD.mass);
+    var DMS = document.getElementById('DMS');  
+    DMS.setAttribute('value', CRUD.mass);
 
     var dateOfBirth = document.getElementById('dateOfBirth');
     const birthday = new Date(CRUD.created);
