@@ -36,31 +36,31 @@ xhr.onreadystatechange = function() {
     gender.innerHTML = gender.innerHTML + CRUD.gender;
 
     var workPhonenumber = document.getElementById('workPhonenumber');  
-    workPhonenumber.innerHTML = workPhonenumber.innerHTML + CRUD.height);
+    workPhonenumber.innerHTML = workPhonenumber.innerHTML + CRUD.height;
 
     var homePhonenumber = document.getElementById('homePhonenumber');  
-    homePhonenumber.innerHTML = homePhonenumber.innerHTML + CRUD.height);
+    homePhonenumber.innerHTML = homePhonenumber.innerHTML + CRUD.height;
 
     var job = document.getElementById('job');  
-    job.innerHTML = job.innerHTML + CRUD.url);
+    job.innerHTML = job.innerHTML + CRUD.url;
 
     var homeLocation = document.getElementById('homeLocation');  
-    homeLocation.innerHTML = homeLocation.innerHTML + CRUD.homeworld);
+    homeLocation.innerHTML = homeLocation.innerHTML + CRUD.homeworld;
 
     var liveLocation = document.getElementById('liveLocation');  
-    liveLocation.innerHTML = liveLocation.innerHTML + CRUD.homeworld);
+    liveLocation.innerHTML = liveLocation.innerHTML + CRUD.homeworld;
 
     var workLocation = document.getElementById('workLocation');  
-    workLocation.innerHTML = workLocation.innerHTML + CRUD.homeworld);
+    workLocation.innerHTML = workLocation.innerHTML + CRUD.homeworld;
 
     var hospitalLocation = document.getElementById('hospitalLocation');  
-    hospitalLocation.innerHTML = hospitalLocation.innerHTML + CRUD.homeworld);
+    hospitalLocation.innerHTML = hospitalLocation.innerHTML + CRUD.homeworld;
 
     var OMS = document.getElementById('OMS');  
-    OMS.innerHTML = OMS.innerHTML + CRUD.mass);
+    OMS.innerHTML = OMS.innerHTML + CRUD.mass;
 
     var DMS = document.getElementById('DMS');  
-    DMS.innerHTML = DMS.innerHTML + CRUD.mass);
+    DMS.innerHTML = DMS.innerHTML + CRUD.mass;
     }
 
 }
