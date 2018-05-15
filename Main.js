@@ -3,15 +3,8 @@ const assert = require('assert');
 const http = require('http');
 const static = require('node-static');
 const file = new static.Server('.');
-
-const express = require('express')
-const app = express()
-
-app.use(express.static('./public/'))
-
-app.get('/api/', (req, res) => res.send([{name : 'ABC', created : 123}]))
-
-app.listen(8080, () => console.log('I am up on :8080'))
+const express = require('express');
+const app = express();
 
 // http.createServer(function(req, res) {
 //     res.writeHeader(200, {"Content-Type": "text/html"});  
@@ -21,10 +14,10 @@ app.listen(8080, () => console.log('I am up on :8080'))
 // }).listen(8080);
 
 //login
-login = 'Guest';
+login = 'AlasER';
 
 //password
-pass = 'Ce3WnCktxjqM6Vsg';
+pass = 'LunaLina';
 
 // Connection URL
 url = 'mongodb://' + login + ':' + pass + '@mycluster-shard-00-00-w2hxl.mongodb.net:27017,mycluster-shard-00-01-w2hxl.mongodb.net:27017,mycluster-shard-00-02-w2hxl.mongodb.net:27017/test?ssl=true&replicaSet=myCluster-shard-0&authSource=admin&retryWrites=true';
@@ -32,20 +25,27 @@ url = 'mongodb://' + login + ':' + pass + '@mycluster-shard-00-00-w2hxl.mongodb.
 // Database Name
 const dbName = 'Patients&Doctors';
 
-//Collection name
-col = 'Doctors';
-
 // Use connect method to connect to the server
-MongoClient.connect(url, function(err, client) {
-    console.log("Connecting to server...");    
-    assert.equal(null, err);
-    console.log("Connected successfully to server");
 
-    const db = client.db(dbName);
-    findDocuments(db, col, function() {
-        client.close();
-    });
-});
+app.use(express.static('./public/'));
+
+app.get('/doctors/', (req, res) =>  MongoClient.connect(url, function(err, client) {
+                                        console.log("Connecting to server...");    
+                                        assert.equal(null, err);
+                                        console.log("Connected successfully to server");
+                                        
+                                        //Collection name
+                                        col = 'Doctors';
+                                        const db = client.db(dbName);
+                                        res.send(
+                                        findDocuments(db, col, function() {
+                                            client.close();
+                                        }))
+                                    })
+)
+
+//res.send([{name : 'ABC', created : 123}])
+app.listen(8080, () => console.log('I am up on :8080'));
 
 //================================================
 

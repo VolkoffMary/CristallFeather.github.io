@@ -1,11 +1,6 @@
 var xhr = new XMLHttpRequest();
-
-xhr.open('GET', 'http://localhost:8080/api/', true);
-
-
+xhr.open('GET', 'http://localhost:8080/doctors/', true);
 xhr.send();
-
-
 
 xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
@@ -26,6 +21,11 @@ xhr.onreadystatechange = function() {
     }
 
 }
+
+
+
+
+//===============================================================================
 
 function createTable(patientList) {
     var id=1;  
