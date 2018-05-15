@@ -26,7 +26,7 @@ xhr.onreadystatechange = function() {
     title.innerHTML = CRUD.name;
 
     var fullName = document.getElementById('name');  
-    fullName.setAttribute('value', CRUD.name);
+    fullName.setAttribute('value', CRUD.url);
 
     var gender = document.getElementById('gender');  
     gender.setAttribute('value', CRUD.gender);
