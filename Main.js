@@ -29,21 +29,42 @@ const dbName = 'Patients&Doctors';
 
 app.use(express.static('./public/'));
 
-app.get('/doctors/', (req, res) =>  MongoClient.connect(url, function(err, client) {
-                                        console.log("Connecting to server...");    
-                                        assert.equal(null, err);
-                                        console.log("Connected successfully to server");
+app.route('/doctors')
+    .get(function(req, res) {
+        MongoClient.connect(url, function(err, client) {
+            console.log("Connecting to server...");    
+            assert.equal(null, err);
+            console.log("Connected successfully to server");
+            
+            //Collection name
+            var user_id = req.param('id');
+            col = 'Doctors';
+            const db = client.db(dbName);
+            findDocuments(db, col, user_id, function(doc) {
+                res.send(doc);
+                client.close();
+            })
+        })
+    })
+    .post(function(req, res) {
+        res.send('Add a book');
+    });
+
+// app.get('/doctors', (req, res) =>  MongoClient.connect(url, function(err, client) {
+//                                         console.log("Connecting to server...");    
+//                                         assert.equal(null, err);
+//                                         console.log("Connected successfully to server");
                                         
-                                        //Collection name
-                                        col = 'Doctors';
-                                        const db = client.db(dbName);
-                                        findDocuments(db, col, function() {
-                                            res.addHeader("Access-Control-Allow-Origin", "*");
-                                            res.send();
-                                            client.close();
-                                        })
-                                    })
-)
+//                                         //Collection name
+//                                         var user_id = req.param('id');
+//                                         col = 'Doctors';
+//                                         const db = client.db(dbName);
+//                                         findDocuments(db, col, user_id, function(doc) {
+//                                             res.send(doc);
+//                                             client.close();
+//                                         })
+//                                     })
+// )
 
 //res.send([{name : 'ABC', created : 123}])
 app.listen(8080, () => console.log('I am up on :8080'));
@@ -65,16 +86,25 @@ const insertDocuments = function(db, callback) {
     });
 }
 
-const findDocuments = function(db, col, callback) {
+const findDocuments = function(db, col, user_id, callback) {
     // Get the documents collection
     const collection = db.collection(col);
     // Find some documents
-    collection.find({}).toArray(function(err, docs) {
-        assert.equal(err, null);
-        console.log("Found the following records");
-        console.log(docs)
-        callback(docs);
-    });
+    if (user_id != undefined) { 
+        collection.find({_id : user_id}).toArray(function(err, docs) {
+            assert.equal(err, null);
+            console.log("Found the following records");
+            console.log(docs)
+            callback(docs);
+        });
+    } else {
+        collection.find({}).toArray(function(err, docs) {
+            assert.equal(err, null);
+            console.log("Found the following records");
+            console.log(docs)
+            callback(docs);
+        });        
+    }
 }
 
 const updateDocument = function(db, callback) {
