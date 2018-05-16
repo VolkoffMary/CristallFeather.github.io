@@ -29,7 +29,7 @@ const dbName = 'Patients&Doctors';
 
 app.use(express.static('./public/'));
 
-app.route('/doctors')
+app.route('/doctors/:id')
     .get(function(req, res) {
         MongoClient.connect(url, function(err, client) {
             console.log("Connecting to server...");    
