@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 const assert = require('assert');
 const http = require('http');
 const static = require('node-static');
@@ -29,27 +30,32 @@ const dbName = 'Patients&Doctors';
 
 app.use(express.static('./public/'));
 
+app.route('/doctors/')
+    .get((req, res) => docLookup(res))
+
 app.route('/doctors/:id')
     .get(function(req, res) {
-        MongoClient.connect(url, function(err, client) {
-            console.log("Connecting to server...");    
-            assert.equal(null, err);
-            console.log("Connected successfully to server");
-            
-            //Collection name
-            var user_id = req.param('id');
-            col = 'Doctors';
-            const db = client.db(dbName);
-            findDocuments(db, col, user_id, function(doc) {
-                res.send(doc);
-                client.close();
-            })
-        })
+        docLookup(res, req.param('id'));
     })
     .post(function(req, res) {
         res.send('Add a book');
     });
 
+function docLookup(res, user_id) {
+    MongoClient.connect(url, function(err, client) {
+        console.log("Connecting to server...");    
+        assert.equal(null, err);
+        console.log("Connected successfully to server");
+        
+        //Collection name
+        col = 'Doctors';
+        const db = client.db(dbName);
+        findDocuments(db, col, user_id, function(doc) {
+            res.send(doc);
+            client.close();
+        })
+    })
+}
 // app.get('/doctors', (req, res) =>  MongoClient.connect(url, function(err, client) {
 //                                         console.log("Connecting to server...");    
 //                                         assert.equal(null, err);
@@ -91,17 +97,19 @@ const findDocuments = function(db, col, user_id, callback) {
     const collection = db.collection(col);
     // Find some documents
     if (user_id != undefined) { 
-        collection.find({_id : user_id}).toArray(function(err, docs) {
-            assert.equal(err, null);
-            console.log("Found the following records");
-            console.log(docs)
-            callback(docs);
+        console.log('LOOKA FOR A >>>>>>>>>', user_id); 
+        var docs = collection.findOne({_id : ObjectID(user_id)}).then(doc => {
+            console.log('FOND AND FOUND >>>>>>>>>', doc);        
+            callback(doc);
         });
+        // console.log("Found the following record");
+        // console.log(docs);
+        // callback(docs);
     } else {
         collection.find({}).toArray(function(err, docs) {
             assert.equal(err, null);
             console.log("Found the following records");
-            console.log(docs)
+            console.log(docs);
             callback(docs);
         });        
     }
