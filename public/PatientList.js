@@ -24,10 +24,10 @@ xhr.onreadystatechange = function() {
 
 //================================================================
 
-function createTable(patientList) {
-    var id=1;  
+function createTable(patientList) {  
     var table = document.getElementById('table'); 
     patientList.forEach(function(patient) {
+        var id = patient._id;
         var tr = table.appendChild(document.createElement('tr'));
         var namePlaceholder = tr.appendChild(document.createElement('td'));
         var name = namePlaceholder.appendChild(document.createElement('a'));
@@ -38,6 +38,5 @@ function createTable(patientList) {
         const birthday = new Date(patient.dateOfBirth);     
         time.innerHTML = birthday.toLocaleString(); 
         namePlaceholder.setAttribute('width', '90%');
-        id++;
     });
 }
