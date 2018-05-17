@@ -1,6 +1,6 @@
 ﻿var xhr = new XMLHttpRequest();
 var link = window.location.href;
-var mark = link.indexOf("&id")+4;
+var mark = link.indexOf("?id")+4;
 var id = link.substring(mark,link.length);
 var hrefLink='/doctors/' + id;
 xhr.open('GET', hrefLink, true);
