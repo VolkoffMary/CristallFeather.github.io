@@ -40,5 +40,6 @@ xhr.onreadystatechange = function() {
 
 const deleteData = function(id) {
     xhr.open("DELETE", 'doctors/' + id, true);
+    console.log(id);
     xhr.send(null);
 };
