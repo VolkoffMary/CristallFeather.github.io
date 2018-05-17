@@ -1,11 +1,6 @@
 var xhr = new XMLHttpRequest();
-
-xhr.open('GET', 'https://swapi.co/api/people/', true);
-
-
+xhr.open('GET', 'patients/', true);
 xhr.send();
-
-
 
 xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
@@ -26,6 +21,8 @@ xhr.onreadystatechange = function() {
     }
 
 }
+
+//================================================================
 
 function createTable(patientList) {
     var id=1;  

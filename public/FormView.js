@@ -2,15 +2,13 @@
 var link = window.location.href;
 var mark = link.indexOf("?id")+4;
 var id = link.substring(mark,link.length);
-var hrefLink='https://swapi.co/api/people/' + id;
+var hrefLink = 'patients/' + id;
 xhr.open('GET', hrefLink, true);
 var aHref = 'EditForm.html?id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);
-
+document.getElementById('deleteData').setAttribute('onload', 'deleteData(' + hrefLink + ')');
 
 xhr.send();
-
-
 
 xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;

@@ -61,6 +61,34 @@ app.route('/doctors/:id')
         res.redirect(`/DoctorsList.html`);
     })
 
+app.route('/patients/')
+    .get((req, res) => {
+        var col = 'Patients';
+        docLookup(res, col)
+    })
+    .post(function(req, res) {
+        var col = 'Patients';
+        docCreate(req.body, res, col);
+        res.redirect(`/PatientList.html`);           
+    })    
+
+app.route('/patients/:id')
+    .get(function(req, res) {
+        var col = 'Patients';
+        docLookup(res, col, req.param('id'));
+    })
+    .post(function(req, res) {
+        var col = 'Patients';
+        docUpdate(req.body, res, col, req.param('id'));
+        res.redirect(`/FormView.html?id=${req.param('id')}`);            
+    })
+    .delete(function(req, res) {
+        var col = 'Patients';
+	    console.log(req.param('id'))
+        docDelete(res, col, req.param('id'));
+        res.redirect(`/PatientList.html`);
+    })
+
 const PORT = process.env.PORT; 
 app.listen(PORT, () => console.log('I am up on PORT'));
 
