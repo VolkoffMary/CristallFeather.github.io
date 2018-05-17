@@ -54,11 +54,11 @@ app.route('/doctors/:id')
         docUpdate(req.body, res, col, req.param('id'));
         res.redirect(`/DoctorView.html?id=${req.param('id')}`);            
     })
-    // .post(function(req, res) {
-    //     var col = 'Doctors';
-    //     docUpdate(req.body, res, col, req.param('id'));
-    //     res.redirect(`/DoctorView.html?id=${req.param('id')}`);
-    // })
+    .post(function(req, res) {
+        var col = 'Doctors';
+        docUpdate(req.body, res, col, req.param('id'));
+        res.redirect(`/DoctorView.html?id=${req.param('id')}`);
+    })
 
 const PORT = process.env.PORT; 
 app.listen(PORT, () => console.log('I am up on PORT'));

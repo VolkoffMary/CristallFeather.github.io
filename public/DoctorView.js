@@ -4,8 +4,9 @@ var mark = link.indexOf("?id")+4;
 var id = link.substring(mark,link.length);
 var hrefLink = 'doctors/' + id;
 xhr.open('GET', hrefLink, true);
-var aHref = 'EditDoctor.html?act=upd&id=' + id; 
+var aHref = 'EditDoctor.html?id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);
+document.getElementById('deleteData').setAttribute('href', '/' + hrefLink);
 
 
 xhr.send();
