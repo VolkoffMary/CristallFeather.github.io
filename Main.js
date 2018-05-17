@@ -90,7 +90,7 @@ function docUpdate(formData, res, col, user_id) {
     })
 }
 
-function doсCreate(formData, res, col) {
+function docCreate(formData, res, col) {
     MongoClient.connect(url, function(err, client) {
         console.log("Connecting to server...");    
         assert.equal(null, err);
