@@ -70,7 +70,8 @@ function docUpdate(formData, res, col, user_id) {
     })
 }
 
-app.listen(8080, () => console.log('I am up on :8080'));
+const PORT = process.env.PORT 
+app.listen(PORT, () => console.log('I am up on PORT'));
 
 //================================================
 
