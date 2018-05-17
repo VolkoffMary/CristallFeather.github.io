@@ -33,31 +33,31 @@ if (mark != 3) {
         gender.setAttribute('value', CRUD.gender);
 
         var workPhonenumber = document.getElementById('workPhonenumber');  
-        workPhonenumber.setAttribute('value', CRUD.height);
+        workPhonenumber.setAttribute('value', CRUD.workPhonenumber);
 
         var homePhonenumber = document.getElementById('homePhonenumber');  
-        homePhonenumber.setAttribute('value', CRUD.height);
+        homePhonenumber.setAttribute('value', CRUD.homePhonenumber);
 
         var job = document.getElementById('job');  
-        job.setAttribute('value', CRUD.url);
+        job.setAttribute('value', CRUD.job);
 
         var homeLocation = document.getElementById('homeLocation');  
-        homeLocation.setAttribute('value', CRUD.homeworld);
+        homeLocation.setAttribute('value', CRUD.homeLocation);
 
         var liveLocation = document.getElementById('liveLocation');  
-        liveLocation.setAttribute('value', CRUD.homeworld);
+        liveLocation.setAttribute('value', CRUD.liveLocation);
 
         var workLocation = document.getElementById('workLocation');  
-        workLocation.setAttribute('value', CRUD.homeworld);
+        workLocation.setAttribute('value', CRUD.workLocation);
 
         var hospitalLocation = document.getElementById('hospitalLocation');  
-        hospitalLocation.setAttribute('value', CRUD.homeworld);
+        hospitalLocation.setAttribute('value', CRUD.hospitalLocation);
 
         var OMS = document.getElementById('OMS');  
-        OMS.setAttribute('value', CRUD.mass);
+        OMS.setAttribute('value', CRUD.OMS);
 
         var DMS = document.getElementById('DMS');  
-        DMS.setAttribute('value', CRUD.mass);
+        DMS.setAttribute('value', CRUD.DMS);
         
 
         var dateOfBirth = document.getElementById('dateOfBirth');

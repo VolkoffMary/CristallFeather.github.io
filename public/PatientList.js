@@ -35,7 +35,7 @@ function createTable(patientList) {
         name.innerHTML = patient.name;
         var aHref = 'FormView.html?id=' + id;   
         name.setAttribute('href', aHref);
-        const birthday = new Date(patient.created);     
+        const birthday = new Date(patient.dateOfBirth);     
         time.innerHTML = birthday.toLocaleString(); 
         namePlaceholder.setAttribute('width', '90%');
         id++;

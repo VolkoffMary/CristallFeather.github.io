@@ -27,38 +27,38 @@ xhr.onreadystatechange = function() {
     fullName.innerHTML = fullName.innerHTML + CRUD.name;
 
     var dateOfBirth = document.getElementById('dateOfBirth');
-    const birthday = new Date(CRUD.created)      
+    const birthday = new Date(CRUD.dateOfBirth)      
     dateOfBirth.innerHTML = dateOfBirth.innerHTML + birthday.toLocaleString(); 
 
     var gender = document.getElementById('gender');  
     gender.innerHTML = gender.innerHTML + CRUD.gender;
 
     var workPhonenumber = document.getElementById('workPhonenumber');  
-    workPhonenumber.innerHTML = workPhonenumber.innerHTML + CRUD.height;
+    workPhonenumber.innerHTML = workPhonenumber.innerHTML + CRUD.workPhonenumber;
 
     var homePhonenumber = document.getElementById('homePhonenumber');  
-    homePhonenumber.innerHTML = homePhonenumber.innerHTML + CRUD.height;
+    homePhonenumber.innerHTML = homePhonenumber.innerHTML + CRUD.homePhonenumber;
 
     var job = document.getElementById('job');  
-    job.innerHTML = job.innerHTML + CRUD.url;
+    job.innerHTML = job.innerHTML + CRUD.job;
 
     var homeLocation = document.getElementById('homeLocation');  
-    homeLocation.innerHTML = homeLocation.innerHTML + CRUD.homeworld;
+    homeLocation.innerHTML = homeLocation.innerHTML + CRUD.homeLocation;
 
     var liveLocation = document.getElementById('liveLocation');  
-    liveLocation.innerHTML = liveLocation.innerHTML + CRUD.homeworld;
+    liveLocation.innerHTML = liveLocation.innerHTML + CRUD.liveLocation;
 
     var workLocation = document.getElementById('workLocation');  
-    workLocation.innerHTML = workLocation.innerHTML + CRUD.homeworld;
+    workLocation.innerHTML = workLocation.innerHTML + CRUD.workLocation;
 
     var hospitalLocation = document.getElementById('hospitalLocation');  
-    hospitalLocation.innerHTML = hospitalLocation.innerHTML + CRUD.homeworld;
+    hospitalLocation.innerHTML = hospitalLocation.innerHTML + CRUD.hospitalLocation;
 
     var OMS = document.getElementById('OMS');  
-    OMS.innerHTML = OMS.innerHTML + CRUD.mass;
+    OMS.innerHTML = OMS.innerHTML + CRUD.OMS;
 
     var DMS = document.getElementById('DMS');  
-    DMS.innerHTML = DMS.innerHTML + CRUD.mass;
+    DMS.innerHTML = DMS.innerHTML + CRUD.DMS;
     }
 
 }
