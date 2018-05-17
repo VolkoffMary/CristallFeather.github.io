@@ -16,7 +16,7 @@ xhr.onreadystatechange = function() {
         }
         // вывести результат
         var CRUD = JSON.parse(xhr.responseText);
-        var patientList = CRUD.results;
+        var patientList = CRUD;
         createTable(patientList);
     }
 
