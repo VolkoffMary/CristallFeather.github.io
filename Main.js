@@ -41,7 +41,7 @@ app.route('/doctors/')
     .post(function(req, res) {
         var col = 'Doctors';
         docCreate(req.body, res, col);
-        res.redirect(`/DoctorList.html`);           
+        res.redirect(`/DoctorsList.html`);           
     })    
 
 app.route('/doctors/:id')
