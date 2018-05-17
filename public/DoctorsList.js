@@ -22,9 +22,6 @@ xhr.onreadystatechange = function() {
 
 }
 
-
-
-
 //===============================================================================
 
 function createTable(patientList) {

@@ -2,11 +2,7 @@
 var link = window.location.href;
 var mark = link.indexOf("?id")+4;
 var id = link.substring(mark,link.length);
-<<<<<<< HEAD
 var hrefLink = 'doctors/' + id;
-=======
-var hrefLink='/doctors/' + id;
->>>>>>> f04634c237a51d4bcc33e2385e56fb37cd3b9a75
 xhr.open('GET', hrefLink, true);
 var aHref = 'EditDoctor.html?act=upd&id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);

@@ -37,7 +37,12 @@ app.route('/doctors/')
     .get((req, res) => {
         var col = 'Doctors';
         docLookup(res, col)
-    });
+    })
+    .post(function(req, res) {
+        var col = 'Doctors';
+        docCreate(req.body, res, col);
+        res.redirect(`/DoctorList.html`);           
+    })    
 
 app.route('/doctors/:id')
     .get(function(req, res) {
@@ -46,13 +51,8 @@ app.route('/doctors/:id')
     })
     .post(function(req, res) {
         var col = 'Doctors';
-        if (req.param('act') = 'upd') {
-            docUpdate(req.body, res, col, req.param('id'));
-            res.redirect(`/DoctorView.html?id=${req.param('id')}`);            
-        } else {
-            docCreate(req.body, res, col);
-            res.redirect(`/DoctorList.html`);           
-        }
+        docUpdate(req.body, res, col, req.param('id'));
+        res.redirect(`/DoctorView.html?id=${req.param('id')}`);            
     })
     // .post(function(req, res) {
     //     var col = 'Doctors';
