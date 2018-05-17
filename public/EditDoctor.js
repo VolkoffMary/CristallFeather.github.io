@@ -1,8 +1,8 @@
 ﻿var xhr = new XMLHttpRequest();
 var link = window.location.href;
-var mark = link.indexOf("?id")+4;
+var mark = link.indexOf("&id")+4;
 var id = link.substring(mark,link.length);
-var hrefLink='http://localhost:8080/doctors/' + id;
+var hrefLink='doctors/' + id;
 var aHref = 'DoctorView.html?id=' + id;   
 document.getElementById('returnLink').setAttribute('href', aHref);
 xhr.open('GET', hrefLink, true);
@@ -17,7 +17,7 @@ xhr.onreadystatechange = function() {
 
     if (xhr.status != 200) {
     // обработать ошибку
-    alert(xhr.status + ': ' + xhr.statusText);
+    //alert(xhr.status + ': ' + xhr.statusText);
     } else {
     // вывести результат
     var CRUD = JSON.parse(xhr.responseText);

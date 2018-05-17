@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://localhost:8080/doctors/', true);
+xhr.open('GET', 'doctors/', true);
 xhr.send();
 
 xhr.onreadystatechange = function() {

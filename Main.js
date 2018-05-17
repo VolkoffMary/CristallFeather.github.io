@@ -30,20 +30,35 @@ app.use(express.static('./public/'));
 
 app.route('/doctors/')
     .get((req, res) => {
-        col = 'Doctors';
+        var col = 'Doctors';
         docLookup(res, col)
     });
 
 app.route('/doctors/:id')
     .get(function(req, res) {
-        col = 'Doctors';
+        var col = 'Doctors';
         docLookup(res, col, req.param('id'));
     })
     .post(function(req, res) {
-        col = 'Doctors';
-        docUpdate(req.body, res, col, req.param('id'));
-        res.redirect(`/DoctorView.html?id=${req.param('id')}`);
-    });
+        var col = 'Doctors';
+        if (req.param('act') = 'upd') {
+            docUpdate(req.body, res, col, req.param('id'));
+            res.redirect(`/DoctorView.html?id=${req.param('id')}`);            
+        } else {
+            docCreate(req.body, res, col);
+            res.redirect(`/DoctorList.html`);           
+        }
+    })
+    // .post(function(req, res) {
+    //     var col = 'Doctors';
+    //     docUpdate(req.body, res, col, req.param('id'));
+    //     res.redirect(`/DoctorView.html?id=${req.param('id')}`);
+    // })
+
+const PORT = process.env.PORT; 
+app.listen(PORT, () => console.log('I am up on PORT'));
+
+//=============================================================================
 
 function docLookup(res, col, user_id) {
     MongoClient.connect(url, function(err, client) {
@@ -70,21 +85,42 @@ function docUpdate(formData, res, col, user_id) {
     })
 }
 
-app.listen(8080, () => console.log('I am up on :8080'));
+function doсCreate(formData, res, col) {
+    MongoClient.connect(url, function(err, client) {
+        console.log("Connecting to server...");    
+        assert.equal(null, err);
+        console.log("Connected successfully to server");
+        const db = client.db(dbName);
+        insertDocument(db, col, formData, function() {
+            client.close();
+        })
+    })
+}
+
+function docDelete(formData, res, col, user_id) {
+    MongoClient.connect(url, function(err, client) {
+        console.log("Connecting to server...");    
+        assert.equal(null, err);
+        console.log("Connected successfully to server");
+        const db = client.db(dbName);
+        updateDocument(db, col, user_id, formData, function() {
+            client.close();
+        })
+    })
+}
+
+
 
 //================================================
 
-const insertDocuments = function(db, callback) {
+const insertDocument = function(db, col, formData, callback) {
     // Get the documents collection
     const collection = db.collection(col);
     // Insert some documents
-    collection.insertMany([
-        {a : 1}, {a : 2}, {a : 3}
-    ], function(err, result) {
+    collection.insertOne( formData, function(err, result) {
         assert.equal(err, null);
-        assert.equal(3, result.result.n);
-        assert.equal(3, result.ops.length);
-        console.log("Inserted 3 documents into the collection");
+        console.log("Inserted document into the collection");
+        console.log(result);
         callback(result);
     });
 }

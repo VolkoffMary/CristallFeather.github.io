@@ -1,10 +1,10 @@
 ﻿var xhr = new XMLHttpRequest();
 var link = window.location.href;
-var mark = link.indexOf("?id")+4;
+var mark = link.indexOf("&id")+4;
 var id = link.substring(mark,link.length);
-var hrefLink='http://localhost:8080/doctors/' + id;
+var hrefLink='doctors/' + id;
 xhr.open('GET', hrefLink, true);
-var aHref = 'EditDoctor.html?id=' + id; 
+var aHref = 'EditDoctor.html?act=upd&id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);
 
 
