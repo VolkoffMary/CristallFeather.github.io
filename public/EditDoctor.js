@@ -3,14 +3,14 @@ var link = window.location.href;
 var mark = link.indexOf("?id")+4;
 var id = link.substring(mark,link.length);
 var hrefLink='http://localhost:8080/doctors/' + id;
+var aHref = 'DoctorView.html?id=' + id;   
+document.getElementById('returnLink').setAttribute('href', aHref);
 xhr.open('GET', hrefLink, true);
-var aHref = 'EditDoctor.html?id=' + id; 
-document.getElementById('changeData').setAttribute('href', aHref);
-
 
 xhr.send();
 
-
+var form = document.getElementById('formId');
+form.setAttribute('action', '/doctors/'+id);
 
 xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
@@ -24,18 +24,18 @@ xhr.onreadystatechange = function() {
 
     var title = document.getElementsByTagName('title')[0];
     title.innerHTML = CRUD.name;
-    
+
     var fullName = document.getElementById('name');  
-    fullName.innerHTML = fullName.innerHTML + CRUD.name;
+    fullName.setAttribute('value', CRUD.name);
 
     var phonenumber = document.getElementById('phonenumber');  
-    phonenumber.innerHTML = phonenumber.innerHTML + CRUD.phonenumber;
+    phonenumber.setAttribute('value', CRUD.phonenumber);
 
     var job = document.getElementById('job');  
-    job.innerHTML = job.innerHTML + CRUD.job;
+    job.setAttribute('value', CRUD.job);
 
     var hospitalLocation = document.getElementById('hospitalLocation');  
-    hospitalLocation.innerHTML = hospitalLocation.innerHTML + CRUD.hospitalLocation;
+    hospitalLocation.setAttribute('value', CRUD.hospitalLocation);
     }
 
 }

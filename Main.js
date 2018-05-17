@@ -6,13 +6,11 @@ const static = require('node-static');
 const file = new static.Server('.');
 const express = require('express');
 const app = express();
-
-// http.createServer(function(req, res) {
-//     res.writeHeader(200, {"Content-Type": "text/html"});  
-//     res.write('MainPage.html');  
-//     console.log('Server running on port 8080');
-//     res.end();    
-// }).listen(8080);
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+// in latest body-parser use like below.
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //login
 login = 'AlasER';
@@ -31,24 +29,27 @@ const dbName = 'Patients&Doctors';
 app.use(express.static('./public/'));
 
 app.route('/doctors/')
-    .get((req, res) => docLookup(res))
+    .get((req, res) => {
+        col = 'Doctors';
+        docLookup(res, col)
+    });
 
 app.route('/doctors/:id')
     .get(function(req, res) {
-        docLookup(res, req.param('id'));
+        col = 'Doctors';
+        docLookup(res, col, req.param('id'));
     })
     .post(function(req, res) {
-        res.send('Add a book');
+        col = 'Doctors';
+        docUpdate(req.body, res, col, req.param('id'));
+        res.redirect(`/DoctorView.html?id=${req.param('id')}`);
     });
 
-function docLookup(res, user_id) {
+function docLookup(res, col, user_id) {
     MongoClient.connect(url, function(err, client) {
         console.log("Connecting to server...");    
         assert.equal(null, err);
         console.log("Connected successfully to server");
-        
-        //Collection name
-        col = 'Doctors';
         const db = client.db(dbName);
         findDocuments(db, col, user_id, function(doc) {
             res.send(doc);
@@ -56,23 +57,19 @@ function docLookup(res, user_id) {
         })
     })
 }
-// app.get('/doctors', (req, res) =>  MongoClient.connect(url, function(err, client) {
-//                                         console.log("Connecting to server...");    
-//                                         assert.equal(null, err);
-//                                         console.log("Connected successfully to server");
-                                        
-//                                         //Collection name
-//                                         var user_id = req.param('id');
-//                                         col = 'Doctors';
-//                                         const db = client.db(dbName);
-//                                         findDocuments(db, col, user_id, function(doc) {
-//                                             res.send(doc);
-//                                             client.close();
-//                                         })
-//                                     })
-// )
 
-//res.send([{name : 'ABC', created : 123}])
+function docUpdate(formData, res, col, user_id) {
+    MongoClient.connect(url, function(err, client) {
+        console.log("Connecting to server...");    
+        assert.equal(null, err);
+        console.log("Connected successfully to server");
+        const db = client.db(dbName);
+        updateDocument(db, col, user_id, formData, function() {
+            client.close();
+        })
+    })
+}
+
 app.listen(8080, () => console.log('I am up on :8080'));
 
 //================================================
@@ -102,9 +99,6 @@ const findDocuments = function(db, col, user_id, callback) {
             console.log('FOND AND FOUND >>>>>>>>>', doc);        
             callback(doc);
         });
-        // console.log("Found the following record");
-        // console.log(docs);
-        // callback(docs);
     } else {
         collection.find({}).toArray(function(err, docs) {
             assert.equal(err, null);
@@ -115,15 +109,15 @@ const findDocuments = function(db, col, user_id, callback) {
     }
 }
 
-const updateDocument = function(db, callback) {
+const updateDocument = function(db, col, user_id, formData, callback) {
     // Get the documents collection
     const collection = db.collection(col);
-    // Update document where a is 2, set b equal to 1
-    collection.updateOne({ a : 2 }
-    , { $set: { b : 1 } }, function(err, result) {
+    // Update document
+    collection.updateOne({ _id : ObjectID(user_id) }, { $set: formData }, function(err, result) {
+    //   console.log('ARRR"', err)
+        
         assert.equal(err, null);
-        assert.equal(1, result.result.n);
-        console.log("Updated the document with the field a equal to 2");
+        console.log("Updated the document");
         callback(result);
     });  
 }
