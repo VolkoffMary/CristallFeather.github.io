@@ -6,12 +6,9 @@ var hrefLink = 'doctors/' + id;
 xhr.open('GET', hrefLink, true);
 var aHref = 'EditDoctor.html?id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);
-document.getElementById('deleteData').setAttribute('href', '/' + hrefLink);
-
+document.getElementById('deleteData').setAttribute('onload', 'deleteData(' + id + ')');
 
 xhr.send();
-
-
 
 xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
@@ -40,3 +37,7 @@ xhr.onreadystatechange = function() {
     }
 
 }
+
+const deleteData = function(id) {
+    xhr.open("DELETE", 'doctors/' + id, true);
+};

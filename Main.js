@@ -54,10 +54,10 @@ app.route('/doctors/:id')
         docUpdate(req.body, res, col, req.param('id'));
         res.redirect(`/DoctorView.html?id=${req.param('id')}`);            
     })
-    .post(function(req, res) {
+    .delete(function(req, res) {
         var col = 'Doctors';
-        docUpdate(req.body, res, col, req.param('id'));
-        res.redirect(`/DoctorView.html?id=${req.param('id')}`);
+        docDelete(res, col, req.param('id'));
+        res.redirect(`/DoctorsList.html`);
     })
 
 const PORT = process.env.PORT; 
@@ -102,13 +102,13 @@ function docCreate(formData, res, col) {
     })
 }
 
-function docDelete(formData, res, col, user_id) {
+function docDelete(res, col, user_id) {
     MongoClient.connect(url, function(err, client) {
         console.log("Connecting to server...");    
         assert.equal(null, err);
         console.log("Connected successfully to server");
         const db = client.db(dbName);
-        updateDocument(db, col, user_id, formData, function() {
+        removeDocument(db, col, user_id, function() {
             client.close();
         })
     })
@@ -161,14 +161,13 @@ const updateDocument = function(db, col, user_id, formData, callback) {
     });  
 }
 
-const removeDocument = function(db, callback) {
+const removeDocument = function(db, col, user_id, callback) {
   // Get the documents collection
   const collection = db.collection(col);
   // Delete document where a is 3
-  collection.deleteOne({ a : 1 }, function(err, result) {
+  collection.deleteOne({ _id : ObjectID(user_id) }, function(err, result) {
     assert.equal(err, null);
-    assert.equal(1, result.result.n);
-    console.log("Removed the document with the field a equal to 3");
+    console.log("Removed the document");
     callback(result);
   });    
 }
