@@ -164,10 +164,11 @@ const updateDocument = function(db, col, user_id, formData, callback) {
 const removeDocument = function(db, col, user_id, callback) {
   // Get the documents collection
   const collection = db.collection(col);
-  // Delete document where a is 3
-  collection.deleteOne({ _id : ObjectID(user_id) }, function(err, result) {
-    assert.equal(err, null);
-    console.log("Removed the document");
-    callback(result);
-  });    
+  // Delete document
+  console.log(user_id)
+//   collection.deleteOne({ _id : ObjectID(user_id) }, function(err, result) {
+//     assert.equal(err, null);
+//     console.log("Removed the document");
+//     callback(result);
+//   });    
 }
