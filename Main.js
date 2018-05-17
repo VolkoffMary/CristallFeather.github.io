@@ -56,6 +56,8 @@ app.route('/doctors/:id')
     })
     .delete(function(req, res) {
         var col = 'Doctors';
+	console.log(req)
+	console.log(req.param('id'))
         docDelete(res, col, req.param('id'));
         res.redirect(`/DoctorsList.html`);
     })
