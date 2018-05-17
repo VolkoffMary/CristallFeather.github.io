@@ -17,7 +17,7 @@ nav.appendChild(emptySpace);
 nav.appendChild(signIn);
 
 patientList.innerHTML = 'Пациенты';
-patientList.innerHTML = 'Доктора';
+doctorsList.innerHTML = 'Доктора';
 signIn.innerHTML = 'Администратор';
 nav.setAttribute('id','nav');
 logo.setAttribute('href', 'MainPage.html');
