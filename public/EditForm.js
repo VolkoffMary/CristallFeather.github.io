@@ -28,9 +28,40 @@ xhr.onreadystatechange = function() {
     var fullName = document.getElementById('name');  
     fullName.setAttribute('value', CRUD.name);
 
+    var gender = document.getElementById('gender');  
+    gender.setAttribute('value', CRUD.gender);
+
+    var workPhonenumber = document.getElementById('workPhonenumber');  
+    workPhonenumber.setAttribute('value', CRUD.height);
+
+    var homePhonenumber = document.getElementById('homePhonenumber');  
+    homePhonenumber.setAttribute('value', CRUD.height);
+
+    var job = document.getElementById('job');  
+    job.setAttribute('value', CRUD.url);
+
+    var homeLocation = document.getElementById('homeLocation');  
+    homeLocation.setAttribute('value', CRUD.homeworld);
+
+    var liveLocation = document.getElementById('liveLocation');  
+    liveLocation.setAttribute('value', CRUD.homeworld);
+
+    var workLocation = document.getElementById('workLocation');  
+    workLocation.setAttribute('value', CRUD.homeworld);
+
+    var hospitalLocation = document.getElementById('hospitalLocation');  
+    hospitalLocation.setAttribute('value', CRUD.homeworld);
+
+    var OMS = document.getElementById('OMS');  
+    OMS.setAttribute('value', CRUD.mass);
+
+    var DMS = document.getElementById('DMS');  
+    DMS.setAttribute('value', CRUD.mass);
+    
+
     var dateOfBirth = document.getElementById('dateOfBirth');
     const birthday = new Date(CRUD.created);
-    dateOfBirth.setAttribute('value', birthday.toLocaleString());
+    dateOfBirth.setAttribute('value', birthday.toLocaleString());    
     }
 
 }

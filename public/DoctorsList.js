@@ -1,11 +1,6 @@
 var xhr = new XMLHttpRequest();
-
-xhr.open('GET', 'http://localhost:8080/api/', true);
-
-
+xhr.open('GET', 'doctors/', true);
 xhr.send();
-
-
 
 xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
@@ -27,19 +22,23 @@ xhr.onreadystatechange = function() {
 
 }
 
+
+
+
+//===============================================================================
+
 function createTable(patientList) {
-    var id=1;  
     var table = document.getElementById('table'); 
     patientList.forEach(function(patient) {
+        var id = patient._id;
         var tr = table.appendChild(document.createElement('tr'));
         var namePlaceholder = tr.appendChild(document.createElement('td'));
         var name = namePlaceholder.appendChild(document.createElement('a'));
-        var time = tr.appendChild(document.createElement('td'));
+        var job = tr.appendChild(document.createElement('td'));
         name.innerHTML = patient.name;
-        var aHref = 'FormView.html?id=' + id;   
+        var aHref = 'DoctorView.html?id=' + id;   
         name.setAttribute('href', aHref);
-        time.innerHTML = patient.created;   
+        job.innerHTML = patient.job;   
         namePlaceholder.setAttribute('width', '90%');
-        id++;
     });
 } 
