@@ -6,6 +6,7 @@ var hrefLink = 'doctors/' + id;
 xhr.open('GET', hrefLink, true);
 var aHref = 'EditDoctor.html?id=' + id; 
 document.getElementById('changeData').setAttribute('href', aHref);
+console.log(id)
 document.getElementById('deleteData').setAttribute('onload', 'deleteData(' + id + ')');
 
 xhr.send();
