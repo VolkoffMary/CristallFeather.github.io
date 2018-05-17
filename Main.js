@@ -28,6 +28,11 @@ const dbName = 'Patients&Doctors';
 
 app.use(express.static('./public/'));
 
+app.route('/')
+    .get((req, res) => {
+		res.redirect(`/MainPage.html`);
+    });
+
 app.route('/doctors/')
     .get((req, res) => {
         var col = 'Doctors';
@@ -108,8 +113,6 @@ function docDelete(formData, res, col, user_id) {
         })
     })
 }
-
-
 
 //================================================
 
