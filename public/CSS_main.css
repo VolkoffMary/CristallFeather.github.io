@@ -6,6 +6,10 @@ header {
     align-items: center;    
 }
 
+h1 {
+    color:white;
+}
+
 #nav {
     display: flex;
     justify-content: space-between;
